@@ -847,7 +847,7 @@ namespace JSAM
             {
                 soundType = l.soundNamespaceGenerated + "." + soundType;
             }
-            var assembly = soundType + ", Assembly-CSharp";
+            var assembly = soundType + ", AudioAssets";
 
             Type enumType = Type.GetType(assembly);
             enums.AddRange(Enum.GetNames(enumType));
@@ -870,7 +870,7 @@ namespace JSAM
             {
                 musicType = l.musicNamespaceGenerated + "." + musicType;
             }
-            assembly = musicType + ", Assembly-CSharp";
+            assembly = musicType + ", AudioAssets";
 
             enumType = Type.GetType(assembly);
             enums.AddRange(Enum.GetNames(enumType));
