@@ -106,7 +106,11 @@ namespace JSAM.JSAMEditor
                         //EditorGUILayout.LabelField($"{item.Value.Library.name} (Users: {item.Value.Users})");
                         if (GUILayout.Button($"{item.Value.Library.name}"))
                         {
+#if UNITY_6000_3_OR_NEWER
+                            AudioLibraryEditor.OnOpenAsset(item.Value.Library.GetEntityId(), 0);
+#else
                             AudioLibraryEditor.OnOpenAsset(item.Value.Library.GetInstanceID(), 0);
+#endif
                         }
                     }
                 }

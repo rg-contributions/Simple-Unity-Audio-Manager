@@ -6,7 +6,9 @@ namespace JSAM
     {
         public static T FindObjectOfType<T>() where T : Behaviour
         {
-#if UNITY_6000_0_OR_NEWER
+#if UNITY_6000_6_OR_NEWER
+            return Object.FindAnyObjectByType<T>();
+#elif UNITY_6000_0_OR_NEWER
             return Object.FindFirstObjectByType<T>();
 #else
             return Object.FindObjectOfType<T>();
