@@ -85,9 +85,15 @@ namespace JSAM.JSAMEditor
         Color ButtonColor { get { return GUI.color.Subtract(new Color(0.2f, 0.2f, 0.2f, 0)); } }
 
         [OnOpenAsset]
+#if UNITY_6000_3_OR_NEWER
+        public static bool OnOpenAsset(EntityId entityId, int line)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(entityId);
+#else
         public static bool OnOpenAsset(int instanceID, int line)
         {
             string assetPath = AssetDatabase.GetAssetPath(instanceID);
+#endif
             var newAsset = AssetDatabase.LoadAssetAtPath<AudioLibrary>(assetPath);
             if (newAsset)
             {

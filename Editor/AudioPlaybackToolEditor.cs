@@ -155,9 +155,15 @@ namespace JSAM.JSAMEditor
         }
 
         [OnOpenAsset]
+#if UNITY_6000_3_OR_NEWER
+        public static bool OnDoubleClickAssets(EntityId entityId, int line)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(entityId);
+#else
         public static bool OnDoubleClickAssets(int instanceID, int line)
         {
             string assetPath = AssetDatabase.GetAssetPath(instanceID);
+#endif
             var file = AssetDatabase.LoadAssetAtPath<BaseAudioFileObject>(assetPath);
             if (file)
             {
